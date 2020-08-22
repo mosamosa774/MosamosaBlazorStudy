@@ -1,0 +1,25 @@
+﻿<h1>Fibonacci</h1>
+<h3>Fibonacci Number: @Result</h3>
+<button @onclick="Decrease">-1</button> @N <button @onclick="Increase">+1</button>
+
+@code {
+    [Parameter]
+    public long Result {get; set;} = 0;
+
+    [Parameter]
+    public int N {get; set;} = 0;
+    private void Decrease(){
+        this.N = this.N - 1 < 0 ? this.N : this.N -1;
+        this.Result = CalculateFibonacci(this.N);
+    }
+    
+    private void Increase(){
+        this.Result = CalculateFibonacci(++this.N);
+    }
+
+    private long CalculateFibonacci(int n){
+        if(n == 0) return 0;
+        else if(n == 1) return 1;
+        return CalculateFibonacci(n-1) + CalculateFibonacci(n-2);
+    }
+}

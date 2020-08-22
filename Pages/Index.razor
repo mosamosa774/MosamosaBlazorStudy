@@ -1,0 +1,26 @@
+﻿@page "/"
+
+<h1>@Title</h1>
+
+<p>ホットリロードやり方わかんない！</p>
+<p>もしかして？</p>
+<p>やっぱだめだわ</p>
+<p>ここにHTML書く</p>
+<button @onclick="changeTitle">@ButtonText</button>
+<br>
+<br>
+<Fibonacci/>
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = "ここがタイトル";
+
+    [Parameter]
+    public string ButtonText { get; set; } = "ここがボタンのテキスト";
+
+    private void changeTitle()
+    {
+        this.Title = this.Title == "タイトル変わったっしょ？" ? "ここがタイトル" : "タイトル変わったっしょ？";
+        this.ButtonText = this.ButtonText == "もう一回押すと戻るよ" ? "ここがボタンのテキスト" : "もう一回押すと戻るよ";
+    }
+}
